@@ -1,5 +1,18 @@
 # ceri-m2-test
 
+## Authors
+-AIT MANSOUR Mohamed
+-BELGHARBI Meryem
+
+## TODO List
+
+- [x] Fork the project
+- [x] Create POM.xml
+- [x] Import project into Eclipse
+- [x] Configure CircleCI
+- [x] Configure Covecov and Codacy
+- [ ] Unit testing
+
 ## Resources
 
 ### TP
