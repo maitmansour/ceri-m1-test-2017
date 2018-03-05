@@ -1,8 +1,8 @@
 # ceri-m2-test
 
 ## Authors
--AIT MANSOUR Mohamed
--BELGHARBI Meryem
+- AIT MANSOUR Mohamed.
+- BELGHARBI Meryem.
 
 ## TODO List
 
