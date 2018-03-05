@@ -1,0 +1,38 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.numidea.app</groupId>
+    <artifactId>numidea</artifactId>
+    <version>1.0.0</version>
+    
+  <build>
+    <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+    <scriptSourceDirectory>${basedir}/src/main/scripts</scriptSourceDirectory>
+    <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+    <outputDirectory>${basedir}/target/classes</outputDirectory>
+    <testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
+   </build>
+    
+    <url>https://github.com/maitmansour95/ceri-m1-test-2017</url>
+    <developers>
+        <developer>
+            <id>maitmansour95</id>
+            <name>Mohamed AIT MANSOUR</name>
+            <url>https://github.com/maitmansour95/</url>
+        </developer>
+        <developer>
+            <id>belgharbimeryem96</id>
+            <name>Meryem BELGHARBI</name>
+            <url>https://github.com/belgharbimeryem96</url>
+        </developer>
+    </developers>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.0</version>
+            <type>jar</type>
+            <scope>test</scope>
+            <optional>false</optional>
+        </dependency>
+    </dependencies>
+</project>
