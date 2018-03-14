@@ -1,19 +1,27 @@
-# JavaFX PhotoEditor
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c4f21fbc84be4088be8d43d32833bcfc)](https://www.codacy.com/app/maitmansour95/PhotoEditor?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=maitmansour95/PhotoEditor&amp;utm_campaign=Badge_Grade)
-
-## Author
-- AIT MANSOUR Mohamed <contact@numidea.com>.
-
-## Functionalities
-- [x] Select a directory
-- [x] List all pictures on directory
-- [x] Choose a picture
-- [x] Update a Picture Tags 
-- [x] Internationalization (Ar/Fr/En)
-- [ ] Crop / Rotate / Slide
-- [x] Find by Keyword
-
-## Technologies
-- NetBeans
-- Scene Builder
-- JavaFX
+-# ceri-m2-test
+-
+-## Authors
+-- AIT MANSOUR Mohamed.
+-- BELGHARBI Meryem.
+-
+-## TODO List
+-
+-- [x] Fork the project
+-- [x] Create POM.xml
+-- [x] Import project into Eclipse
+-- [x] Configure CircleCI
+-- [x] Configure Covecov and Codacy
+-- [x] Unit testing
+-
+-## Resources
+-
+-### TP
+-
+-- [API javadoc](http://faylixe.fr/ceri-m1-test-2017/javadoc)
+-- [TP1 : Setup the environment](https://github.com/Faylixe/ceri-m2-test-2017/blob/master/docs/tp1.md)
+-- [TP2 : Continous integration and quality assesment](https://github.com/Faylixe/ceri-m2-test-2017/blob/master/docs/tp2.md)
+-- [TP3 : Unit testing](https://github.com/Faylixe/ceri-m2-test-2017/blob/master/docs/tp3.md)
+-
+-### External
+-
+-- [JUnit 5 documentation](http://junit.org/junit5/docs/current/user-guide)
