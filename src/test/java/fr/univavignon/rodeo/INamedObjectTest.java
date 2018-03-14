@@ -6,15 +6,24 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
 
+import fr.univavignon.rodeo.api.IAnimal;
 import fr.univavignon.rodeo.api.INamedObject;
 
 
 public class INamedObjectTest {
 	
+	/**
+	 * get INamedObject Mock
+	 * @return
+	 */
+	public static INamedObject getINamedObjectMock() {
+		return  mock(INamedObject.class);
+	}	
+	
 	@Test
 	public void testGetName() {
 		//Create mock
-		INamedObject namedObjectTest = mock(INamedObject.class);
+		INamedObject namedObjectTest = getINamedObjectMock();
 		
 		 // defining the value of getName
         when(namedObjectTest.getName()).thenReturn("myName");
