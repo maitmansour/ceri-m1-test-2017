@@ -34,7 +34,7 @@ public class ISpecieTest {
         when(iSpecie.getArea()).thenReturn(10);
 
         //testing getArea()
-        assertEquals(iSpecie.getName(), 1);
+        assertEquals(iSpecie.getArea(), 10);
 
 	}	
 	
