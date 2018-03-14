@@ -15,6 +15,7 @@ import fr.univavignon.rodeo.api.IEnvironmentProvider;
 import fr.univavignon.rodeo.IEnvironmentTest;
 
 public class IEnvironmentProviderTest {
+	private IEnvironmentProvider iEnvironmentProvider;
 
 	/**
 	 * get IEnvironement Mock
@@ -24,7 +25,6 @@ public class IEnvironmentProviderTest {
 		return  mock(IEnvironmentProvider.class);
 	}
 
-	private IEnvironmentProvider iEnvironmentProvider;
 	
 	/**
 	 * Testing of Get Areas
