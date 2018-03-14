@@ -10,7 +10,6 @@ import java.util.List;
 import org.junit.Test;
 
 import fr.univavignon.rodeo.api.IAnimal;
-import fr.univavignon.rodeo.api.INamedObject;
 import fr.univavignon.rodeo.api.ISpecie;
 
 public class ISpecieTest {
@@ -23,6 +22,9 @@ public class ISpecieTest {
 		return  mock(ISpecie.class);
 	}	
 	
+	/**
+	 * testing get Area
+	 */
 	@Test
 	public void testGetArea() {
 		//Create mock
@@ -36,6 +38,9 @@ public class ISpecieTest {
 
 	}	
 	
+	/**
+	 * testing get Animals
+	 */
 	@Test
 	public void testGetAnimals() {
 		//Create mock

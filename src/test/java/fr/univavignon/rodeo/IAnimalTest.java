@@ -18,6 +18,9 @@ public class IAnimalTest {
 		return  mock(IAnimal.class);
 	}
 	
+	/**
+	 * Testing Get XP
+	 */
 	@Test
 	public void testGetXP() {
 		// init iAnimal
@@ -30,7 +33,9 @@ public class IAnimalTest {
         assertEquals(iAnimal.getXP(), 1);
 	}
 
-	
+	/**
+	 * Thesting Is Boss
+	 */
 	@Test
 	public void testIsBoss() {
 		// init iAnimal
@@ -43,6 +48,9 @@ public class IAnimalTest {
         assertTrue(iAnimal.isBoss());	
         }
 
+	/**
+	 * Testing Is Endangered
+	 */
 	@Test
 	public void testIsEndangered() {
 		// init iAnimal
