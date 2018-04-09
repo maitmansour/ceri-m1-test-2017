@@ -32,7 +32,7 @@ public class IAnimalTest {
 	}	
 	
 	/**
-	 * get IAnimal Mock
+	 * get IAnimal Instance
 	 * @return
 	 */
 	public  IAnimal getIAnimalInstance() {

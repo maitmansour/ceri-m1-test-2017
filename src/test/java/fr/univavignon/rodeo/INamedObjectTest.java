@@ -5,6 +5,8 @@ import org.junit.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
+
+import fr.univavignon.rodeo.api.IAnimal;
 import fr.univavignon.rodeo.api.INamedObject;
 
 
@@ -15,16 +17,25 @@ public class INamedObjectTest {
 	 * @return
 	 */
 	public static INamedObject getINamedObjectMock() {
-		return  mock(INamedObject.class);
+		 // defining the value of getName
+		INamedObject namedObjectTest = mock(INamedObject.class);
+        when(namedObjectTest.getName()).thenReturn("myName");
+		return  namedObjectTest;
 	}	
+	
+	/**
+	 * get INamedObject Mock
+	 * @return
+	 */
+	public  INamedObject getINamedObjectInstance() {
+		return  getINamedObjectMock();
+	}
 	
 	@Test
 	public void testGetName() {
 		//Create mock
 		INamedObject namedObjectTest = getINamedObjectMock();
 		
-		 // defining the value of getName
-        when(namedObjectTest.getName()).thenReturn("myName");
 
         //testing getName()
         assertEquals(namedObjectTest.getName(), "myName");
