@@ -5,8 +5,6 @@ import org.junit.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
-
-import fr.univavignon.rodeo.api.IAnimal;
 import fr.univavignon.rodeo.api.INamedObject;
 
 
@@ -34,7 +32,7 @@ public class INamedObjectTest {
 	@Test
 	public void testGetName() {
 		//Create mock
-		INamedObject namedObjectTest = getINamedObjectMock();
+		INamedObject namedObjectTest = getINamedObjectInstance();
 		
 
         //testing getName()

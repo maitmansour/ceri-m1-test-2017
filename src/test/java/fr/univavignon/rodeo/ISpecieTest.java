@@ -11,16 +11,41 @@ import org.junit.Test;
 
 import fr.univavignon.rodeo.api.IAnimal;
 import fr.univavignon.rodeo.api.ISpecie;
+import fr.univavignon.rodeo.implementation.Animal;
 
 public class ISpecieTest {
 
+	
 	/**
 	 * get ISpecie Mock
 	 * @return
 	 */
 	public static ISpecie getISpecieMock() {
-		return  mock(ISpecie.class);
+		
+		ISpecie iSpecie = mock(ISpecie.class);
+		// defining the value of getArea
+		when(iSpecie.getArea()).thenReturn(10);
+		
+
+		//Creating List of Animals
+		List<IAnimal> animals = new ArrayList<IAnimal>();
+		animals.add(new Animal("test",1,true,true,false));
+		
+		 // defining the value of getAnimals
+        when(iSpecie.getAnimals()).thenReturn(animals);
+
+		return  iSpecie;
 	}	
+	
+
+	/**
+	 * get ISpecie instance
+	 * @return
+	 */
+	public ISpecie getISpecieInstance() {
+		return  getISpecieMock();
+	}	
+	
 	
 	/**
 	 * testing get Area
@@ -28,11 +53,8 @@ public class ISpecieTest {
 	@Test
 	public void testGetArea() {
 		//Create mock
-		ISpecie iSpecie = getISpecieMock();
+		ISpecie iSpecie = getISpecieInstance();
 		
-		 // defining the value of getArea
-        when(iSpecie.getArea()).thenReturn(10);
-
         //testing getArea()
         assertEquals(iSpecie.getArea(), 10);
 
@@ -44,17 +66,17 @@ public class ISpecieTest {
 	@Test
 	public void testGetAnimals() {
 		//Create mock
-		ISpecie iSpecie = getISpecieMock();
-		
-		//Creating List of Animals
-		
-		List<IAnimal> animals = new ArrayList<IAnimal>();
-		
-		 // defining the value of getAnimals
-        when(iSpecie.getAnimals()).thenReturn(animals);
+		ISpecie iSpecie = getISpecieInstance();
 
-        //testing getAnimals()
-        assertEquals(iSpecie.getAnimals(), animals);
+		List<IAnimal> animals = new ArrayList<IAnimal>();
+		IAnimal animal = new Animal("test",1,true,true,false);
+		animals.add(animal);
+        //testing getAnimals() size
+		assertEquals(animals.size(), iSpecie.getAnimals().size());
+		
+		//test if same name (element)
+		assertEquals(animal.getName(), iSpecie.getAnimals().get(0).getName());
+
 
 	}
 }
