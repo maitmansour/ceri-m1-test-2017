@@ -15,7 +15,28 @@ public class IAnimalTest {
 	 * @return
 	 */
 	public static IAnimal getIAnimalMock() {
-		return  mock(IAnimal.class);
+		IAnimal iAnimal = mock(IAnimal.class);				
+		// defining the value of XP
+		when(iAnimal.getXP()).thenReturn(1);
+		// init iAnimal
+		// defining the value of isBoss
+        when(iAnimal.isBoss()).thenReturn(true);	
+		
+		// defining the value of isEndagered
+        when(iAnimal.isEndangered()).thenReturn(true);	
+		
+		// defining the value of isSecret
+        when(iAnimal.isSecret()).thenReturn(false);
+        
+		return  iAnimal;
+	}	
+	
+	/**
+	 * get IAnimal Mock
+	 * @return
+	 */
+	public  IAnimal getIAnimalInstance() {
+		return  getIAnimalMock();
 	}
 	
 	/**
@@ -24,11 +45,7 @@ public class IAnimalTest {
 	@Test
 	public void testGetXP() {
 		// init iAnimal
-		iAnimal=getIAnimalMock();
-		
-		// defining the value of XP
-        when(iAnimal.getXP()).thenReturn(1);
-        
+		iAnimal=getIAnimalInstance();
         //test the getXP
         assertEquals(iAnimal.getXP(), 1);
 	}
@@ -39,10 +56,8 @@ public class IAnimalTest {
 	@Test
 	public void testIsBoss() {
 		// init iAnimal
-		iAnimal=getIAnimalMock();
+		iAnimal=getIAnimalInstance();
 		
-		// defining the value of isBoss
-        when(iAnimal.isBoss()).thenReturn(true);
         
         //test the isBoss
         assertTrue(iAnimal.isBoss());	
@@ -54,10 +69,7 @@ public class IAnimalTest {
 	@Test
 	public void testIsEndangered() {
 		// init iAnimal
-		iAnimal=getIAnimalMock();
-		
-		// defining the value of isEndagered
-        when(iAnimal.isEndangered()).thenReturn(true);
+		iAnimal=getIAnimalInstance();
         
         //test the isBoss
         assertTrue(iAnimal.isEndangered());		
@@ -66,10 +78,7 @@ public class IAnimalTest {
 	@Test
 	public void testIsSecret() {
 		// init iAnimal
-		iAnimal=getIAnimalMock();
-		
-		// defining the value of isSecret
-        when(iAnimal.isSecret()).thenReturn(false);
+		iAnimal=getIAnimalInstance();
         
         //test the isSecret
         assertFalse(iAnimal.isSecret());		
