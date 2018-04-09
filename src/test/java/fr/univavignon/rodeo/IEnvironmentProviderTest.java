@@ -1,7 +1,6 @@
 package fr.univavignon.rodeo;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -11,7 +10,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import fr.univavignon.rodeo.api.IAnimal;
 import fr.univavignon.rodeo.api.IEnvironment;
 import fr.univavignon.rodeo.api.IEnvironmentProvider;
 

@@ -10,7 +10,6 @@ import static org.mockito.Mockito.doNothing;
 import org.junit.Test;
 
 import fr.univavignon.rodeo.api.IAnimal;
-import fr.univavignon.rodeo.api.IEnvironment;
 import fr.univavignon.rodeo.api.IGameState;
 import fr.univavignon.rodeo.api.ISpecie;
 import fr.univavignon.rodeo.api.SpecieLevel;
