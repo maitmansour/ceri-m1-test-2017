@@ -9,12 +9,15 @@ import java.util.List;
 
 import org.junit.Test;
 
+import fr.univavignon.rodeo.api.IAnimal;
 import fr.univavignon.rodeo.api.IEnvironment;
 import fr.univavignon.rodeo.api.ISpecie;
+import fr.univavignon.rodeo.implementation.Animal;
+import fr.univavignon.rodeo.implementation.Specie;
 
 public class IEnvironmentTest {
 
-	public IEnvironment iEnvironment;
+	public static IEnvironment iEnvironment;
 
 	
 	/**
@@ -22,7 +25,30 @@ public class IEnvironmentTest {
 	 * @return
 	 */
 	public static IEnvironment getIEnvironmentMock() {
-		return  mock(IEnvironment.class);
+		
+		iEnvironment = mock(IEnvironment.class);
+		// defining the value of Areas
+        when(iEnvironment.getAreas()).thenReturn(1);
+        
+
+		//Creating List of Species
+		List<IAnimal> animals = new ArrayList<IAnimal>();
+		animals.add(new Animal("test",1,true,true,false));				
+		List<ISpecie> species = new ArrayList<ISpecie>();
+		species.add(new Specie("myName",10,animals));
+		
+		// defining the value of Species
+        when(iEnvironment.getSpecies()).thenReturn(species);
+        
+		return  iEnvironment;
+	}
+	
+	/**
+	 * get IEnvironement Instance
+	 * @return
+	 */
+	public  IEnvironment getIEnvironmentInstance() {
+		return getIEnvironmentMock();
 	}
 	
 	/**
@@ -31,11 +57,8 @@ public class IEnvironmentTest {
 	@Test
 	public void testGetAreas() {
 		// init IEnvironment
-		iEnvironment=getIEnvironmentMock();
-		
-		// defining the value of Areas
-        when(iEnvironment.getAreas()).thenReturn(1);
-        
+		iEnvironment=getIEnvironmentInstance();
+
         //test the getXP
         assertEquals(iEnvironment.getAreas(), 1);
 	}	
@@ -46,16 +69,20 @@ public class IEnvironmentTest {
 	@Test
 	public void testGetSpecies() {
 		// init IEnvironment
-		iEnvironment=getIEnvironmentMock();
+		iEnvironment=getIEnvironmentInstance();
 		
         
+		//Creating List of Species
+		List<IAnimal> animals = new ArrayList<IAnimal>();
+		animals.add(new Animal("test",1,true,true,false));				
 		List<ISpecie> species = new ArrayList<ISpecie>();
-
-		// defining the value of Species
-        when(iEnvironment.getSpecies()).thenReturn(species);
-        
-        //test the getSpecies
-        assertEquals(iEnvironment.getSpecies(), species);
+		species.add(new Specie("myName",10,animals));
+		
+        //testing getAnimals() size
+		assertEquals(species.size(), iEnvironment.getSpecies().size());
+		
+		//test if same name (element)
+		assertEquals("myName", iEnvironment.getSpecies().get(0).getName());
 	}
 
 }
