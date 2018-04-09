@@ -120,6 +120,20 @@ public IGameState iGameState;
         
 	}
 	
+	/**
+	 * testing get progression
+	 */
+	@Test
+	public void testGetProgression() {
+		//Create mock
+		iGameState=getIGameStateMock();
+		
+		 // defining the value of getArea
+        when(iGameState.getProgression()).thenReturn(10);
 
+        //testing getArea()
+        assertEquals(iGameState.getProgression(), 10);
+
+	}
 }
 
