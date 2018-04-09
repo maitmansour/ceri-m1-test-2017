@@ -10,7 +10,10 @@ import static org.mockito.Mockito.doNothing;
 import org.junit.Test;
 
 import fr.univavignon.rodeo.api.IAnimal;
+import fr.univavignon.rodeo.api.IEnvironment;
 import fr.univavignon.rodeo.api.IGameState;
+import fr.univavignon.rodeo.api.ISpecie;
+import fr.univavignon.rodeo.api.SpecieLevel;
 
 public class IGameStateTest {
 
@@ -89,4 +92,34 @@ public IGameState iGameState;
 
         
 	}
+	
+	/**
+	 * IllegalArgumentException If the given <tt>specie</tt> is <tt>null</tt>
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testGetSpecieLevelException(){ 
+		
+		iGameState=getIGameStateMock();
+		doThrow(new IllegalArgumentException()).when(iGameState).getSpecieLevel(null);
+		iGameState.getSpecieLevel(null);    
+        
+	}	
+	
+	/**
+	 *  Current specie level.
+	 */
+	@Test
+	public void testGetSpecieLevel(){ 
+		
+		iGameState=getIGameStateMock();
+		SpecieLevel specieLevel = null ;
+		ISpecie iSpecie=ISpecieTest.getISpecieMock();
+
+        when(iGameState.getSpecieLevel(iSpecie)).thenReturn(specieLevel);
+        assertEquals(iGameState.getSpecieLevel(iSpecie), specieLevel);
+        
+	}
+	
+
 }
+
