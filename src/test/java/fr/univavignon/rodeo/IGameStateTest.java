@@ -88,9 +88,7 @@ public IGameState iGameState;
 		iGameState=getIGameStateMock();
 		IAnimal iAnimal=IAnimalTest.getIAnimalMock();
         doNothing().when(iGameState).catchAnimal(iAnimal);
-		iGameState.catchAnimal(iAnimal);
-
-        
+		iGameState.catchAnimal(iAnimal);  
 	}
 	
 	/**

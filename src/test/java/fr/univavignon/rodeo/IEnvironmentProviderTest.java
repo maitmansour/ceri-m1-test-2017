@@ -1,6 +1,8 @@
 package fr.univavignon.rodeo;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -9,6 +11,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import fr.univavignon.rodeo.api.IAnimal;
 import fr.univavignon.rodeo.api.IEnvironment;
 import fr.univavignon.rodeo.api.IEnvironmentProvider;
 
@@ -25,6 +28,30 @@ public class IEnvironmentProviderTest {
 		return  mock(IEnvironmentProvider.class);
 	}
 
+	
+	/**
+	 * IllegalArgumentException If the given <tt>name</tt> is null.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testGetEnvironmentNotFound(){ 
+		
+		iEnvironmentProvider=getIEnvironmentProviderMock();
+		doThrow(new IllegalArgumentException()).when(iEnvironmentProvider).getEnvironment(null);
+		iEnvironmentProvider.getEnvironment(null);    
+        
+	}	
+	
+	/**
+	 * return nothing
+	 */
+	@Test
+	public void testGetEnvironmentFound(){ 
+		
+		iEnvironmentProvider=getIEnvironmentProviderMock();
+		IEnvironment iEnvironment=IEnvironmentTest.getIEnvironmentMock();
+        when(iEnvironmentProvider.getEnvironment("envtest")).thenReturn(iEnvironment);
+        assertEquals(iEnvironmentProvider.getEnvironment("envtest"), iEnvironment);
+	}
 	
 	/**
 	 * Testing of Get Areas
