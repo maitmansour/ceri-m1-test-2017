@@ -34,8 +34,7 @@ public static IAnimal iAnimal=IAnimalTest.getIAnimalMock();
 
 		
 		SpecieLevel specieLevel = null ;
-        when(iGameState.getSpecieLevel(iSpecie)).thenReturn(specieLevel);
-		
+        when(iGameState.getSpecieLevel(iSpecie)).thenReturn(specieLevel);		
 		 // defining the value of getArea
        when(iGameState.getProgression()).thenReturn(10);
 
