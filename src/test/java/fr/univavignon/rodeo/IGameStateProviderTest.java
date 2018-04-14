@@ -11,15 +11,31 @@ import fr.univavignon.rodeo.api.IGameState;
 import fr.univavignon.rodeo.api.IGameStateProvider;
 
 public class IGameStateProviderTest {
-	public IGameStateProvider iGameStateProvider;
+	public static IGameStateProvider iGameStateProvider;
 
 	/**
 	 * get IGameStateProvider Mock
 	 * @return
 	 */
 	public static IGameStateProvider getIGameStateProviderMock() {
-		return  mock(IGameStateProvider.class);
+		iGameStateProvider = mock(IGameStateProvider.class);
+		doThrow(new IllegalArgumentException()).when(iGameStateProvider).get(null);
+
+		IGameState iGameState=IGameStateTest.getIGameStateMock();
+        when(iGameStateProvider.get("newGameState")).thenReturn(iGameState);
+		
+		
+		return  iGameStateProvider;
 	}
+	
+	/**
+	 * get IGameStateProvider Instance
+	 * @return
+	 */
+	public  IGameStateProvider getIGameStateProviderInstance() {
+		return  getIGameStateProviderMock();
+	}
+	
 	
 	/**
 	 * IllegalArgumentException If the given <tt>name</tt> is null.
@@ -27,8 +43,7 @@ public class IGameStateProviderTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testGetNull(){ 
 		
-		iGameStateProvider=getIGameStateProviderMock();
-		doThrow(new IllegalArgumentException()).when(iGameStateProvider).get(null);
+		iGameStateProvider=getIGameStateProviderInstance();
 		iGameStateProvider.get(null);    
         
 	}	
@@ -39,10 +54,9 @@ public class IGameStateProviderTest {
 	@Test
 	public void testGet(){ 
 		
-		iGameStateProvider=getIGameStateProviderMock();
+		iGameStateProvider=getIGameStateProviderInstance();
 		IGameState iGameState=IGameStateTest.getIGameStateMock();
-        when(iGameStateProvider.get("gageStatetest")).thenReturn(iGameState);
-        assertEquals(iGameStateProvider.get("gageStatetest"), iGameState);
+        assertEquals(iGameStateProvider.get("newGameState").getName(), iGameState.getName());
 	}
 
 	

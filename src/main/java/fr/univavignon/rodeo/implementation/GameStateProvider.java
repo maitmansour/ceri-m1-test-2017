@@ -1,0 +1,33 @@
+package fr.univavignon.rodeo.implementation;
+
+import java.util.ArrayList;
+
+import fr.univavignon.rodeo.IGameStateTest;
+import fr.univavignon.rodeo.api.IGameState;
+import fr.univavignon.rodeo.api.IGameStateProvider;
+
+public class GameStateProvider implements IGameStateProvider{
+
+	private ArrayList<IGameState> iGameStates;
+	
+	public GameStateProvider() {
+		iGameStates= new ArrayList<IGameState>();
+	}
+	public void save(IGameState gameState) {
+		iGameStates.add(gameState);
+		
+	}
+
+	public IGameState get(String name) throws IllegalArgumentException {
+		if (name==null) throw new IllegalArgumentException();
+		for (IGameState iGameState : iGameStates) {
+			if (iGameState.getName().equals(name)) {
+				return iGameState;
+			}
+		}
+		IGameState tmp = IGameStateTest.getIGameStateMock();
+		iGameStates.add(tmp);
+		return tmp;
+	}
+
+}

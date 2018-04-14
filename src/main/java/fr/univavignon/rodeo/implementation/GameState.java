@@ -17,8 +17,9 @@ public class GameState extends NamedObject implements IGameState{
 	}
 
 	public void exploreArea() throws IllegalStateException {
-		throw new IllegalStateException();
-		
+		if (true) {
+			throw new IllegalStateException();
+		}
 	}
 
 	public void catchAnimal(IAnimal animal) throws IllegalArgumentException, IllegalStateException {
