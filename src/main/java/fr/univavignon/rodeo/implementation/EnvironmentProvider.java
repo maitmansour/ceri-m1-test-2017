@@ -25,11 +25,14 @@ public class EnvironmentProvider implements IEnvironmentProvider{
 	}
 
 	public IEnvironment getEnvironment(String name) throws IllegalArgumentException {
-		if (name==null) throw new IllegalArgumentException();
 		IEnvironment environment_return =null;
-		for (IEnvironment environment : environments) {
-			if (environment.getName().equals(name)) {
-				environment_return=environment;
+		if (name==null) {
+			throw new IllegalArgumentException();
+		}else {
+			for (IEnvironment environment : environments) {
+				if (environment.getName().equals(name)) {
+					environment_return=environment;
+				}
 			}
 		}
 		return environment_return;
