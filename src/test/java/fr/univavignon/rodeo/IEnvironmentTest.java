@@ -74,9 +74,9 @@ public class IEnvironmentTest {
         
 		//Creating List of Species
 		List<IAnimal> animals = new ArrayList<IAnimal>();
-		animals.add(new Animal("test",1,true,true,false));				
+		animals.add(IAnimalTest.getIAnimalMock());				
 		List<ISpecie> species = new ArrayList<ISpecie>();
-		species.add(new Specie("myName",10,animals));
+		species.add(ISpecieTest.getISpecieMock());
 		
         //testing getAnimals() size
 		assertEquals(species.size(), iEnvironment.getSpecies().size());

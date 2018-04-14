@@ -7,7 +7,6 @@ import fr.univavignon.rodeo.IAnimalTest;
 import fr.univavignon.rodeo.ISpecieTest;
 import fr.univavignon.rodeo.api.IAnimal;
 import fr.univavignon.rodeo.api.ISpecie;
-import fr.univavignon.rodeo.implementation.Animal;
 import fr.univavignon.rodeo.implementation.Specie;
 
 public class SpecieTest extends ISpecieTest{

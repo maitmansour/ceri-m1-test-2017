@@ -11,7 +11,6 @@ import org.junit.Test;
 
 import fr.univavignon.rodeo.api.IAnimal;
 import fr.univavignon.rodeo.api.ISpecie;
-import fr.univavignon.rodeo.implementation.Animal;
 
 public class ISpecieTest {
 
@@ -25,6 +24,9 @@ public class ISpecieTest {
 		ISpecie iSpecie = mock(ISpecie.class);
 		// defining the value of getArea
 		when(iSpecie.getArea()).thenReturn(10);
+
+		// defining the value of Name
+		when(iSpecie.getName()).thenReturn("myName");
 		
 
 		//Creating List of Animals
