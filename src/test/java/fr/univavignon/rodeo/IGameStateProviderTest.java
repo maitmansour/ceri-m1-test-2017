@@ -59,5 +59,5 @@ public class IGameStateProviderTest {
         assertEquals(iGameStateProvider.get("newGameState").getName(),"myName");
 	}
 
-	
+
 }
