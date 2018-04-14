@@ -16,14 +16,25 @@ import fr.univavignon.rodeo.api.IEnvironmentProvider;
 import fr.univavignon.rodeo.IEnvironmentTest;
 
 public class IEnvironmentProviderTest {
-	private IEnvironmentProvider iEnvironmentProvider;
+	private static IEnvironmentProvider iEnvironmentProvider;
+	public static  IEnvironment iEnvironment=IEnvironmentTest.getIEnvironmentMock();
 
 	/**
 	 * get IEnvironement Mock
 	 * @return
 	 */
 	public static IEnvironmentProvider getIEnvironmentProviderMock() {
-		return  mock(IEnvironmentProvider.class);
+		iEnvironmentProvider = mock(IEnvironmentProvider.class);
+		
+        when(iEnvironmentProvider.getEnvironment("envtest")).thenReturn(iEnvironment);
+		doThrow(new IllegalArgumentException()).when(iEnvironmentProvider).getEnvironment(null);
+        
+		List<String> environments =  new ArrayList<String>();
+		environments.add("envtest");
+		// defining the value of getAvailableEnvironments
+        when(iEnvironmentProvider.getAvailableEnvironments()).thenReturn(environments);
+          
+		return  iEnvironmentProvider;
 	}
 
 	
@@ -33,22 +44,26 @@ public class IEnvironmentProviderTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testGetEnvironmentNotFound(){ 
 		
-		iEnvironmentProvider=getIEnvironmentProviderMock();
-		doThrow(new IllegalArgumentException()).when(iEnvironmentProvider).getEnvironment(null);
+		iEnvironmentProvider=getIEnvironmentProviderInstance();
 		iEnvironmentProvider.getEnvironment(null);    
         
 	}	
 	
+	/**
+	 * get IEnvironementProvider Instance
+	 * @return
+	 */
+	public  IEnvironmentProvider getIEnvironmentProviderInstance() {
+		return getIEnvironmentProviderMock();
+	}
 	/**
 	 * return nothing
 	 */
 	@Test
 	public void testGetEnvironmentFound(){ 
 		
-		iEnvironmentProvider=getIEnvironmentProviderMock();
-		IEnvironment iEnvironment=IEnvironmentTest.getIEnvironmentMock();
-        when(iEnvironmentProvider.getEnvironment("envtest")).thenReturn(iEnvironment);
-        assertEquals(iEnvironmentProvider.getEnvironment("envtest"), iEnvironment);
+		iEnvironmentProvider=getIEnvironmentProviderInstance();
+        assertEquals(iEnvironmentProvider.getEnvironment("envtest").getName(), iEnvironment.getName());
 	}
 	
 	/**
@@ -57,15 +72,10 @@ public class IEnvironmentProviderTest {
 	@Test
 	public void testGetAreas() {
 		// init IEnvironment
-		iEnvironmentProvider=getIEnvironmentProviderMock();
-		
-		IEnvironment environment =IEnvironmentTest.getIEnvironmentMock();
-		
-		// defining the value of getEnvironment
-        when(iEnvironmentProvider.getEnvironment("nametest")).thenReturn(environment);
-        
+		iEnvironmentProvider=getIEnvironmentProviderInstance();
+				
         //test the getEnvironment
-        assertEquals(iEnvironmentProvider.getEnvironment("nametest"), environment);
+        assertEquals(iEnvironmentProvider.getEnvironment("envtest").getName(), iEnvironment.getName());
 	}
 	
 	/**
@@ -74,12 +84,10 @@ public class IEnvironmentProviderTest {
 	@Test
 	public void testGetAvailableEnvironments() {
 		// init IEnvironment
-		iEnvironmentProvider=getIEnvironmentProviderMock();
+		iEnvironmentProvider=getIEnvironmentProviderInstance();
 		
 		List<String> environments =  new ArrayList<String>();
-		// defining the value of getAvailableEnvironments
-        when(iEnvironmentProvider.getAvailableEnvironments()).thenReturn(environments);
-        
+		environments.add("envtest");
         //test the getEnvironment
         assertEquals(iEnvironmentProvider.getAvailableEnvironments(), environments);
 	}

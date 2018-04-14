@@ -9,16 +9,16 @@ import fr.univavignon.rodeo.api.IEnvironmentProvider;
 public class EnvironmentProvider implements IEnvironmentProvider{
 
 	
-	private ArrayList<Environment> environments;
+	private ArrayList<IEnvironment> environments;
 
-	public EnvironmentProvider(ArrayList<Environment> _environments) {
-		environments =new ArrayList<Environment>();
+	public EnvironmentProvider(ArrayList<IEnvironment> _environments) {
+		environments =new ArrayList<IEnvironment>();
 		environments = _environments;
 	}
 	public List<String> getAvailableEnvironments() {
 		List<String> av_environments = new ArrayList<String>();
 		
-		for (Environment environment : environments) {
+		for (IEnvironment environment : environments) {
 			av_environments.add(environment.getName());
 		}
 		return av_environments;
@@ -26,12 +26,12 @@ public class EnvironmentProvider implements IEnvironmentProvider{
 
 	public IEnvironment getEnvironment(String name) throws IllegalArgumentException {
 		if (name==null) throw new IllegalArgumentException();
-		for (Environment environment : environments) {
+		for (IEnvironment environment : environments) {
 			if (environment.getName().equals(name)) {
 				return environment;
 			}
 		}
-		return null;
+		throw new IllegalArgumentException();
 	}
 
 }

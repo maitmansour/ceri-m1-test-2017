@@ -27,6 +27,10 @@ public class IEnvironmentTest {
 	public static IEnvironment getIEnvironmentMock() {
 		
 		iEnvironment = mock(IEnvironment.class);
+		
+        when(iEnvironment.getName()).thenReturn("envtest");
+
+        
 		// defining the value of Areas
         when(iEnvironment.getAreas()).thenReturn(1);
         
