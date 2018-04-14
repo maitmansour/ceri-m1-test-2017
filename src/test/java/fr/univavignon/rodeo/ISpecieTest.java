@@ -29,7 +29,7 @@ public class ISpecieTest {
 
 		//Creating List of Animals
 		List<IAnimal> animals = new ArrayList<IAnimal>();
-		animals.add(new Animal("test",1,true,true,false));
+		animals.add(IAnimalTest.getIAnimalMock());
 		
 		 // defining the value of getAnimals
         when(iSpecie.getAnimals()).thenReturn(animals);
@@ -69,7 +69,7 @@ public class ISpecieTest {
 		ISpecie iSpecie = getISpecieInstance();
 
 		List<IAnimal> animals = new ArrayList<IAnimal>();
-		IAnimal animal = new Animal("test",1,true,true,false);
+		IAnimal animal = IAnimalTest.getIAnimalMock();
 		animals.add(animal);
         //testing getAnimals() size
 		assertEquals(animals.size(), iSpecie.getAnimals().size());

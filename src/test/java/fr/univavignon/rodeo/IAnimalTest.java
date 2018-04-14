@@ -24,9 +24,12 @@ public class IAnimalTest {
 		
 		// defining the value of isEndagered
         when(iAnimal.isEndangered()).thenReturn(true);	
-		
+
 		// defining the value of isSecret
         when(iAnimal.isSecret()).thenReturn(false);
+        
+		// defining the value of name
+        when(iAnimal.getName()).thenReturn("test");
         
 		return  iAnimal;
 	}	
