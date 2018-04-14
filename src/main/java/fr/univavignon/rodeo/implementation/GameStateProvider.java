@@ -13,17 +13,16 @@ public class GameStateProvider implements IGameStateProvider{
 		iGameStates= new ArrayList<IGameState>();
 	}
 	public void save(IGameState gameState) {
-		iGameStates.add(gameState);
-		
+		;
+		//TODO : Add real GameState
 	}
 
 	public IGameState get(String name) throws IllegalArgumentException {
 		if (name==null) throw new IllegalArgumentException();
-		for (IGameState iGameState : iGameStates) {
-			if (iGameState.getName().equals(name)) {
+		for (IGameState iGameState : iGameStates)
+			if (iGameState.getName().equals(name))
 				return iGameState;
-			}
-		}
+		
 		IGameState tmp = new GameState("myName");
 		iGameStates.add(tmp);
 		return tmp;

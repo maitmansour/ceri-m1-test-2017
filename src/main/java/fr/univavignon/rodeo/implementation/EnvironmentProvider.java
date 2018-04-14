@@ -29,11 +29,10 @@ public class EnvironmentProvider implements IEnvironmentProvider{
 		if (name==null) {
 			throw new IllegalArgumentException();
 		}else {
-			for (IEnvironment environment : environments) {
-				if (environment.getName().equals(name)) {
+			for (IEnvironment environment : environments) 
+				if (environment.getName().equals(name))
 					environment_return=environment;
-				}
-			}
+			
 		}
 		return environment_return;
 	}

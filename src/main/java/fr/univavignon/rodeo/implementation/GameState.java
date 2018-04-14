@@ -9,7 +9,6 @@ public class GameState extends NamedObject implements IGameState{
 	
 	private SpecieLevel sl;
 	private int progression;
-	private int area=10;
 	
 	public GameState(String _name) {
 		super(_name);
@@ -18,9 +17,7 @@ public class GameState extends NamedObject implements IGameState{
 	}
 
 	public void exploreArea() throws IllegalStateException {
-		if (area==10) {
 			throw new IllegalStateException();
-		}
 	}
 
 	public void catchAnimal(IAnimal animal) throws IllegalArgumentException, IllegalStateException {
