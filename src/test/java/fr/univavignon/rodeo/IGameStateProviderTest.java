@@ -23,8 +23,9 @@ public class IGameStateProviderTest {
 
 		IGameState iGameState=IGameStateTest.getIGameStateMock();
         when(iGameStateProvider.get("newGameState")).thenReturn(iGameState);
+        when(iGameStateProvider.get("newGameState").getName()).thenReturn("myName");
 		
-		
+        
 		return  iGameStateProvider;
 	}
 	
@@ -55,8 +56,7 @@ public class IGameStateProviderTest {
 	public void testGet(){ 
 		
 		iGameStateProvider=getIGameStateProviderInstance();
-		IGameState iGameState=IGameStateTest.getIGameStateMock();
-        assertEquals(iGameStateProvider.get("newGameState").getName(), iGameState.getName());
+        assertEquals(iGameStateProvider.get("newGameState").getName(),"myName");
 	}
 
 	
