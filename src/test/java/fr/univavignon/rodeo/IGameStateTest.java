@@ -14,14 +14,42 @@ import fr.univavignon.rodeo.api.SpecieLevel;
 
 public class IGameStateTest {
 
-public IGameState iGameState;
+public static IGameState iGameState;
+public static IAnimal iAnimal=IAnimalTest.getIAnimalMock();
 	
 	/**
 	 * get IGameStateTest Mock
 	 * @return
 	 */
 	public static IGameState getIGameStateMock() {
-		return  mock(IGameState.class);
+		iGameState=mock(IGameState.class);
+		
+		
+		doThrow(new IllegalStateException()).when(iGameState).exploreArea();
+		doThrow(new IllegalArgumentException()).when(iGameState).catchAnimal(null);		
+		
+		doThrow(new IllegalArgumentException()).when(iGameState).getSpecieLevel(null);
+		ISpecie iSpecie=ISpecieTest.getISpecieMock();
+		doThrow(new IllegalStateException()).when(iGameState).catchAnimal(iAnimal);
+
+		
+		SpecieLevel specieLevel = null ;
+        when(iGameState.getSpecieLevel(iSpecie)).thenReturn(specieLevel);
+		
+		 // defining the value of getArea
+       when(iGameState.getProgression()).thenReturn(10);
+
+
+		return  iGameState;
+	}
+	
+	
+	/**
+	 * get IGameStateTest Instance
+	 * @return
+	 */
+	public IGameState getIGameStateInstance() {
+		return  getIGameStateMock();
 	}
 	
 	@Test(expected = IllegalStateException.class)
@@ -30,8 +58,6 @@ public IGameState iGameState;
 		// init IGameStateTest
 		iGameState=getIGameStateMock();
 		
-		doThrow(new IllegalStateException()).when(iGameState).exploreArea();
-
 		iGameState.exploreArea();
         
         
@@ -44,8 +70,7 @@ public IGameState iGameState;
 	@Test(expected = IllegalArgumentException.class)
 	public void testCatchAnimalNull(){ 
 		
-		iGameState=getIGameStateMock();
-		doThrow(new IllegalArgumentException()).when(iGameState).catchAnimal(null);
+		iGameState=getIGameStateInstance();
 		iGameState.catchAnimal(null);    
         
 	}
@@ -55,12 +80,8 @@ public IGameState iGameState;
 	 */
 	@Test(expected = IllegalStateException.class)
 	public void testCatchAnimalNotFound(){ 
-		
-		iGameState=getIGameStateMock();
-		IAnimal iAnimal=IAnimalTest.getIAnimalMock();
-		doThrow(new IllegalStateException()).when(iGameState).catchAnimal(iAnimal);
+		iGameState=getIGameStateInstance();
 		iGameState.catchAnimal(iAnimal);    
-        
 	}	
 
 	
@@ -70,8 +91,7 @@ public IGameState iGameState;
 	@Test(expected = IllegalArgumentException.class)
 	public void testGetSpecieLevelException(){ 
 		
-		iGameState=getIGameStateMock();
-		doThrow(new IllegalArgumentException()).when(iGameState).getSpecieLevel(null);
+		iGameState=getIGameStateInstance();
 		iGameState.getSpecieLevel(null);    
         
 	}	
@@ -82,11 +102,9 @@ public IGameState iGameState;
 	@Test
 	public void testGetSpecieLevel(){ 
 		
-		iGameState=getIGameStateMock();
+		iGameState=getIGameStateInstance();
 		SpecieLevel specieLevel = null ;
 		ISpecie iSpecie=ISpecieTest.getISpecieMock();
-
-        when(iGameState.getSpecieLevel(iSpecie)).thenReturn(specieLevel);
         assertEquals(iGameState.getSpecieLevel(iSpecie), specieLevel);
         
 	}
@@ -97,10 +115,7 @@ public IGameState iGameState;
 	@Test
 	public void testGetProgression() {
 		//Create mock
-		iGameState=getIGameStateMock();
-		
-		 // defining the value of getArea
-        when(iGameState.getProgression()).thenReturn(10);
+		iGameState=getIGameStateInstance();
 
         //testing getArea()
         assertEquals(iGameState.getProgression(), 10);
