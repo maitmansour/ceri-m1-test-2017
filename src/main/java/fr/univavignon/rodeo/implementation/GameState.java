@@ -7,8 +7,9 @@ import fr.univavignon.rodeo.api.SpecieLevel;
 
 public class GameState extends NamedObject implements IGameState{
 	
-	SpecieLevel sl;
+	private SpecieLevel sl;
 	private int progression;
+	private int area=10;
 	
 	public GameState(String _name) {
 		super(_name);
@@ -17,7 +18,7 @@ public class GameState extends NamedObject implements IGameState{
 	}
 
 	public void exploreArea() throws IllegalStateException {
-		if (true) {
+		if (area==10) {
 			throw new IllegalStateException();
 		}
 	}
