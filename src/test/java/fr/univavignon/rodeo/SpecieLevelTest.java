@@ -11,6 +11,7 @@ public class SpecieLevelTest {
 		SpecieLevel.valueOf(SpecieLevel.WRANGLER.toString());
 		SpecieLevel.valueOf(SpecieLevel.CHAMPION.toString());
 		SpecieLevel.valueOf(SpecieLevel.MASTER.toString());		
+		SpecieLevel.MASTER.getRequiredXP();		
 	}
 
 }
