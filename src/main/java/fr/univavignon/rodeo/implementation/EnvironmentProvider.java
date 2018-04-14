@@ -29,7 +29,7 @@ public class EnvironmentProvider implements IEnvironmentProvider{
 		IEnvironment environment_return =null;
 		for (IEnvironment environment : environments) {
 			if (environment.getName().equals(name)) {
-				return environment_return=environment;
+				environment_return=environment;
 			}
 		}
 		return environment_return;

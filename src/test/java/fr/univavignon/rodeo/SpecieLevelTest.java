@@ -1,4 +1,6 @@
 package fr.univavignon.rodeo;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import fr.univavignon.rodeo.api.SpecieLevel;
@@ -7,7 +9,7 @@ public class SpecieLevelTest {
 	//Perfection ?
 	@Test
 	public void testSpecieLevel(){
-		SpecieLevel.valueOf(SpecieLevel.NOVICE.toString());
+		assertEquals(0,SpecieLevel.NOVICE);
 		SpecieLevel.valueOf(SpecieLevel.WRANGLER.toString());
 		SpecieLevel.valueOf(SpecieLevel.CHAMPION.toString());
 		SpecieLevel.valueOf(SpecieLevel.MASTER.toString());		
